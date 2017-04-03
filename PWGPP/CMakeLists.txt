@@ -180,6 +180,7 @@ set ( SRCS10
   TRD/info/AliTRDtrendValue.cxx
   TRD/info/AliTRDtriggerInfo.cxx
   TRD/info/AliTRDv0Info.cxx
+  TRD/AliPerformanceTRD.cxx
   )
 #file ( GLOB SRCS11 "background/*.cxx" )
 set ( SRCS11
