@@ -7,7 +7,7 @@ class TH1F;
 class TH2F;
 class AliESDEvent;
 
-#include "AliAnalysisTaskSE.h"  // ?
+#include "AliAnalysisTaskSE.h"
 
 class  AliPerformanceTRD : public  AliAnalysisTaskSE
 {

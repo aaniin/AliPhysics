@@ -1,4 +1,4 @@
-//TRD QA HLT
+//TRD HLT QA
 //Author: Sebastian Syrkowski, syrkowski@physi.uni-heidelberg.de
 
 #include "TH1F.h"
@@ -67,10 +67,9 @@ AliPerformanceTRD::AliPerformanceTRD(const  char* name):
 AliPerformanceTRD::~AliPerformanceTRD ()
 {
     if(fOutputList) delete fOutputList;
-    //do not delete because the histogram is added to fOutputList and is deleted by the owner
-    //if(fHistPt) delete fHistPt;
+    //do not delete histograms because the histograms are added to fOutputList and are deleted by the owner
 }
-
+//______________________________________________________________________________
 void AliPerformanceTRD::UserCreateOutputObjects()
 {
     //  create  a new  TList  that  OWNS  its  objects
@@ -205,5 +204,5 @@ void AliPerformanceTRD::UserExec(Option_t*)
 
 void AliPerformanceTRD::Terminate(Option_t *)
 {
-  // Draw some histogram at the end.
+  // not needed
 }
