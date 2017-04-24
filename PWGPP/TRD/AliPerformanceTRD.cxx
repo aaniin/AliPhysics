@@ -93,7 +93,7 @@ void AliPerformanceTRD::UserCreateOutputObjects()
     fHistNTrdTracklets_counted = new TH1F("fHistNTrdTracklets_counted","number of counted TRD tracklets per event", 100, 0, 1000);
     fHistNTrdTracklets = new TH1F("fHistNTrdTracklets","number of TRD tracklets per event", 100, 0, 1000);
     
-    fHistHalfChamberId = new TH1F("fHistHalfChamberId", "TRD tracklet half-chamber ID", 200,0,200);
+    fHistHalfChamberId = new TH1F("fHistHalfChamberId", "TRD tracklet half-chamber ID", 1081,-0.5,1080.5);
 
     // add histogggrams to our output list
     fOutputList -> Add(fHistPt_global);
@@ -129,7 +129,7 @@ void AliPerformanceTRD::UserExec(Option_t*)
       AliInfo("ERROR: Could not get ESDInputHandler");
       return;
     }
-    if(fUseHLT)
+    if(fUseHLT) // HLT or offline?
     {
       fESDEvent = esdH->GetHLTEvent();
       if(!fESDEvent)
@@ -170,7 +170,7 @@ void AliPerformanceTRD::UserExec(Option_t*)
       if (track->GetTRDntracklets()>0)
       {
         nTrdTracks++;
-        nTrdTracklets+=track->GetTRDntracklets();
+        nTrdTracklets+=track->GetTRDntracklets(); //ToDo: Find out why the result of this is different from GetNumberOfTrdTracklets()
         
         fHistPt_trd->Fill(track->Pt());
         fHistNTracklets_trd->Fill(track->GetTRDntracklets());
@@ -180,7 +180,7 @@ void AliPerformanceTRD::UserExec(Option_t*)
         
         for (int iLayer(0); iLayer<track->kTRDnPlanes; iLayer++)
         {
-          fHistTrdSclice_trd->Fill(track->GetTRDslice(iLayer,0), iLayer); //slice 0: integrated total charge
+          fHistTrdSclice_trd->Fill(track->GetTRDslice(iLayer,0), iLayer); //slice 0: integrated total charge, ToDo: find out why there are additional entries in the 0 bin for layers>0
         }
       }
     }
