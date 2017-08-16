@@ -98,7 +98,7 @@ AliTwoPlusOneContainer::AliTwoPlusOneContainer(const char* name, const char* uEH
 
 //_____________________________________________________________________________
 AliTwoPlusOneContainer::AliTwoPlusOneContainer(const AliTwoPlusOneContainer &c) :
-  TNamed(fName, fTitle),
+  TNamed(c.fName, c.fTitle),
   fTwoPlusOne(0),
   fAsymmetry(0),
   fAsymmetryMixed(0),
